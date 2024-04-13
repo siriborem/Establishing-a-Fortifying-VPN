@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>Open Browser</h2>
+<form id="openBrowserForm" target="browser_frame">
+    {% csrf_token %}
+    <label for="url">Enter URL:</label>
+    <input type="url" name="url" id="urlInput" required>
+    <button type="submit">Open</button>
+</form>
+<br>
+<iframe name="browser_frame" id="browserFrame" sandbox="allow-scripts allow-same-origin" width="100%" height="600"></iframe>
+
+<script>
+    document.getElementById('openBrowserForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var url = document.getElementById('urlInput').value;
+        document.getElementById('browserFrame').src = url;
+    });
+</script>
+{% endblock %}

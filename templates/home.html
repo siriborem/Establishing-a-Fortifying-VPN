@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Your Website!</h1>
+    <p class="lead">This is a simple home page.</p>
+    <hr class="my-4">
+    {% if request.user.is_authenticated %}
+        <button class="btn btn-primary"><a href="{% url 'create_new_connection' %}">New Connection</a></button>
+        <button class="btn btn-secondary"><a href="{% url 'connect_vpn' %}">Connect</a></button>
+        <button class="btn btn-danger"><a href="{% url 'user_logout' %}">Logout</a></button>
+    {% endif %}
+</div>
+{% endblock content %}
